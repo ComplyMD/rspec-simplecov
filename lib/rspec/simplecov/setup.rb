@@ -28,7 +28,7 @@ module RSpec
             minimum_coverage = configuration.described_thing.minimum_coverage
             configuration.described_thing.running = true
             
-            expect( result.covered_percent ).to be >= minimum_coverage
+            expect( result.covered_percent ).to be >= minimum_coverage[:line]
           end
         end
 
