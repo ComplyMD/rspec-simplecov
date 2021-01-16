@@ -24,7 +24,7 @@ module RSpec
         @backtrace = backtrace
 
         @context_text = "#minimum_coverage"
-        @test_case_text = "must be at least #{simplecov_instance.minimum_coverage}%"
+        @test_case_text = "must be at least #{simplecov_instance.minimum_coverage[:line]}%"
 
         Docile.dsl_eval( self, &block ) if block_given?
       end
