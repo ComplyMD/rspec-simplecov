@@ -23,8 +23,10 @@ module RSpec
         @caller_path = backtrace[0].split(':').first
         @backtrace = backtrace
 
+        minimum_line_coverage = simplecov_instance.minimum_coverage
+        minimum_line_coverage = minimum_line_coverage[:line] if minimum_line_coverage.is_a?(Hash) 
         @context_text = "#minimum_coverage"
-        @test_case_text = "must be at least #{simplecov_instance.minimum_coverage[:line]}%"
+        @test_case_text = "must be at least #{minimum_line_coverage}%"
 
         Docile.dsl_eval( self, &block ) if block_given?
       end
